@@ -1,0 +1,5 @@
+.DS_Store
+*.pyc
+private_key.json
+.gitconfig
+__pycache__

@@ -1,0 +1,4 @@
+google-api-python-client==1.7.4
+google-cloud-storage==1.13.0
+polling==0.3.0
+halo==0.0.22
