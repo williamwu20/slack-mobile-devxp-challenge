@@ -3,3 +3,6 @@
 private_key.json
 .gitconfig
 __pycache__
+venvs
+.vscode
+.pytest_cache

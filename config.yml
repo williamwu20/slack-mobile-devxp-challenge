@@ -1,0 +1,18 @@
+# https://cloud.google.com/sdk/gcloud/reference/firebase/test/android/run
+firebase:
+  bucket: mobile-devxp-coding-exercise.appspot.com
+  results-bucket: /test_results/
+  record-video: false
+  project: mobile-devxp-coding-exercise
+
+  # Paths to app and test apk and test result output directory
+  app: ./apk/app-debug.apk
+  test: ./apk/app-debug-androidTest.apk
+  output: ./test_result
+
+  # Path to service account key json
+  service-key: ./firebaserunner/private_key.json
+  
+  device:
+      model: NexusLowRes
+      version: '28'
