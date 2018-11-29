@@ -14,21 +14,21 @@ setup_logger(logger)
 
 def main():
     # Instantiate runner instance
-    runner = Runner(config)
+    runner = Runner(config['service-key'], config['project'], config['record-video'])
     apk_path = 'gs://{}'.format(config['bucket'])
 
     # Upload app-apk to GCS
     logger.info('Uploading app apk..')
-    runner.upload(config['app'], 'app-debug.apk')
+    runner.upload(config['bucket'], config['app'], 'app-debug.apk')
 
     # Upload test apk
     logger.info('Uploading app test apk..')
-    runner.upload(config['test'], 'app-debug-androidTest.apk')
+    runner.upload(config['bucket'], config['test'], 'app-debug-androidTest.apk')
 
     # Set paths and environment
     runner.set_app_apk_path(app_apk_path='{}/app-debug.apk'.format(apk_path))
     runner.set_test_apk_path(test_apk_path='{}/app-debug-androidTest.apk'.format(apk_path))
-    runner.set_environment()
+    runner.set_device(device_config=config['device'])
     runner.set_result_storage_path(result_storage_path='gs://{}/{}'.format(config['bucket'], config['results-bucket']))
 
     # Execute run
@@ -72,7 +72,7 @@ def main():
     
     # Download and parse test results
     logger.info('Downloading test results into {}..'.format(config['output']))
-    runner.download('{}/{}-{}-en-portrait/test_result_1.xml'.format(config['results-bucket'], config['device']['model'], config['device']['version']), '{}/test_result_1.xml'.format(config['output']))
+    runner.download(config['bucket'], '{}/{}-{}-en-portrait/test_result_1.xml'.format(config['results-bucket'], config['device']['model'], config['device']['version']), '{}/test_result_1.xml'.format(config['output']))
     logger.info('Run complete!')
 
 if __name__ == "__main__":
