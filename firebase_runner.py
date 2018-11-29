@@ -29,7 +29,7 @@ def main():
     runner.set_app_apk_path(app_apk_path='{}/app-debug.apk'.format(apk_path))
     runner.set_test_apk_path(test_apk_path='{}/app-debug-androidTest.apk'.format(apk_path))
     runner.set_environment()
-    runner.set_result_storage_path(result_storage_path='gs://{}{}'.format(config['bucket'], config['results-bucket']))
+    runner.set_result_storage_path(result_storage_path='gs://{}/{}'.format(config['bucket'], config['results-bucket']))
 
     # Execute run
     logger.info('Executing run...')
@@ -72,7 +72,7 @@ def main():
     
     # Download and parse test results
     logger.info('Downloading test results into {}..'.format(config['output']))
-    runner.download('test_results/{}-{}-en-portrait/test_result_1.xml'.format(config['device']['model'], config['device']['version']), '{}/test_result_1.xml'.format(config['output']))
+    runner.download('{}/{}-{}-en-portrait/test_result_1.xml'.format(config['results-bucket'], config['device']['model'], config['device']['version']), '{}/test_result_1.xml'.format(config['output']))
     logger.info('Run complete!')
 
 if __name__ == "__main__":

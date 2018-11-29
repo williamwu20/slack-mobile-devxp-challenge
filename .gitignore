@@ -6,3 +6,4 @@ __pycache__
 venvs
 .vscode
 .pytest_cache
+config.yml
