@@ -15,7 +15,7 @@ pip install -r requirements.txt
 ## Authentication
 - Go to https://console.developers.google.com/apis/credentials
 - With your FTL project selected, select Create credentials dropdown and select Service account key
-- Choose service account and download as JSON
+- Choose Service account and download as JSON
 
 ## Configuration
 Modify `config.yml` to fit your project and run needs
@@ -45,3 +45,9 @@ firebase:
 ```
 python firebase_runner.py
 ```
+
+## Optimization and additional thoughts
+- Asynchronous I/O to allow parallel running and polling of multiple matrices simultaneously
+- Error handling for request timeouts, network disconnection
+- Parse test results XML for failures to console to effect fast feedback to developer
+
