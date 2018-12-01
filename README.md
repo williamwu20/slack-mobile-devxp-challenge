@@ -23,7 +23,7 @@ Modify `config.yml` to fit your project and run needs
 ```yaml
 # https://cloud.google.com/sdk/gcloud/reference/firebase/test/android/run
 firebase:
-  bucket: your-project.appspot.com
+  bucket: <your-project-id>.appspot.com
   results-bucket: /test_results/
   record-video: false
   project: your-project-id
